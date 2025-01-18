@@ -1,5 +1,7 @@
 # 
-policy_path: "{LEGGED_GYM_ROOT_DIR}/deploy/pre_train/h1_2/motion.pt"
+# policy_path: "{LEGGED_GYM_ROOT_DIR}/deploy/pre_train/h1_2/motion.pt"
+# policy_path: "{LEGGED_GYM_ROOT_DIR}/logs/h1_2/exported/policies/policy_lstm_1.pt"
+# policy_path: "/home/yuxin/msc_humanoid/logs/rsl_rl/h12_flat/2025-01-14_20-29-04/exported/policy.pt"
 xml_path: "{LEGGED_GYM_ROOT_DIR}/resources/robots/h1_2/scene.xml"
 
 # Total simulation time

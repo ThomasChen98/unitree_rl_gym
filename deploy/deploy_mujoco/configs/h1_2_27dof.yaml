@@ -1,7 +1,7 @@
 # 
 # policy_path: "{LEGGED_GYM_ROOT_DIR}/deploy/pre_train/h1_2/motion.pt"
 # policy_path: "{LEGGED_GYM_ROOT_DIR}/logs/h1_2_27dof/exported/policies/policy_lstm_1.pt"
-policy_path: "/home/yuxin/msc_humanoid/logs/rsl_rl/h12_flat/2025-01-17_23-57-19/exported/policy.pt"
+policy_path: "/home/yuxin/msc_humanoid/logs/rsl_rl/h12_flat/2025-01-20_15-37-11/exported/policy.pt"
 xml_path: "{LEGGED_GYM_ROOT_DIR}/resources/robots/h1_2/scene.xml"
 
 # Total simulation time
@@ -11,19 +11,19 @@ simulation_dt: 0.002
 # Controller update frequency (meets the requirement of simulation_dt * controll_decimation=0.02; 50Hz)
 control_decimation: 10
 
-kps: [60, 60, 60, 80, 60, 15, 
-      60, 60, 60, 80, 60, 15,
+kps: [60, 60, 60, 80, 60, 0, 
+      60, 60, 60, 80, 60, 0,
       160,
       60, 60, 60, 30, 30, 15, 15,
       60, 60, 60, 30, 30, 15, 15]
-kds: [4.0, 4.0, 4.0, 4.0, 1.2, 0.15,  
-      4.0, 4.0, 4.0, 4.0, 1.2, 0.15,
+kds: [4.0, 4.0, 4.0, 4.0, 5, 5,  
+      4.0, 4.0, 4.0, 4.0, 5, 5,
       3.0,
       2.5, 5.0, 5.0, 1.0, 1.0, 1.0, 1.0,
       2.5, 5.0, 5.0, 1.0, 1.0, 1.0, 1.0]
 
-default_angles: [0, -0.135, 0.0, 0.2, -0.2, 0.0, 
-                 0, -0.135, 0.0, 0.2, -0.2, 0.0,
+default_angles: [0, -0.135, 0.0, 0.2, 0.15, 0.0, 
+                 0, -0.135, 0.0, 0.2, 0.15, 0.0,
                  0,
                  0, 0.2, 0, 1.5, 0, 0, 0,
                  0, -0.2, 0, 1.5, 0, 0, 0]

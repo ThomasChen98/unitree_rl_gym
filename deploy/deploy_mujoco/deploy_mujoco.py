@@ -206,24 +206,28 @@ if __name__ == "__main__":
                 obs[9 + 3 * num_actions : 9 + 3 * num_actions + 2] = np.array([sin_phase, cos_phase])
                 obs_tensor = torch.from_numpy(obs).unsqueeze(0)
                 
-                # Reorder qj, dqj, and action in obs to policy joint order
-                qj_reordered = qj[MUJOCO_TO_POLICY].copy()
-                obs[9 : 9 + num_actions] = qj_reordered
+                # -------------------------------------------
+                # # Reorder qj, dqj, and action in obs to policy joint order
+                # qj_reordered = qj[MUJOCO_TO_POLICY].copy()
+                # obs[9 : 9 + num_actions] = qj_reordered
 
-                dqj_reordered = dqj[MUJOCO_TO_POLICY].copy()
-                obs[9 + num_actions : 9 + 2 * num_actions] = dqj_reordered
+                # dqj_reordered = dqj[MUJOCO_TO_POLICY].copy()
+                # obs[9 + num_actions : 9 + 2 * num_actions] = dqj_reordered
 
-                action_reordered_obs = action[MUJOCO_TO_POLICY].copy()
-                obs[9 + 2 * num_actions : 9 + 3 * num_actions] = action_reordered_obs
+                # action_reordered_obs = action[MUJOCO_TO_POLICY].copy()
+                # obs[9 + 2 * num_actions : 9 + 3 * num_actions] = action_reordered_obs
                 
-                obs_tensor = torch.from_numpy(obs[:-2]).unsqueeze(0)
+                # obs_tensor = torch.from_numpy(obs[:-2]).unsqueeze(0)
+                # -------------------------------------------
                 
                 # policy inference
                 action = policy(obs_tensor).detach().numpy().squeeze()
                 
-                # Reorder action to match mujoco joint order
-                action_reordered = action[POLICY_TO_MUJOCO].copy()
-                action = action_reordered
+                # -------------------------------------------
+                # # Reorder action to match mujoco joint order
+                # action_reordered = action[POLICY_TO_MUJOCO].copy()
+                # action = action_reordered
+                # -------------------------------------------
                 
                 # transform action to target_dof_pos
                 target_dof_pos = action * action_scale + default_angles

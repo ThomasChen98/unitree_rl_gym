@@ -134,8 +134,8 @@ if __name__ == "__main__":
         simulation_dt = config["simulation_dt"]
         control_decimation = config["control_decimation"]
 
-        kps = np.array(config["kps"], dtype=np.float32)
-        kds = np.array(config["kds"], dtype=np.float32)
+        kps = np.array(config["kps"], dtype=np.float32)*1.0
+        kds = np.array(config["kds"], dtype=np.float32)*1.5
 
         default_angles = np.array(config["default_angles"], dtype=np.float32)
 
@@ -199,6 +199,8 @@ if __name__ == "__main__":
 
                 obs[:3] = omega
                 obs[3:6] = gravity_orientation
+                cmd[0] = np.clip(int((time.time() - start)/5), 0, 10)
+                print(cmd)
                 obs[6:9] = cmd * cmd_scale
                 obs[9 : 9 + num_actions] = qj
                 obs[9 + num_actions : 9 + 2 * num_actions] = dqj
@@ -207,26 +209,26 @@ if __name__ == "__main__":
                 obs_tensor = torch.from_numpy(obs).unsqueeze(0)
                 
                 # -------------------------------------------
-                # # Reorder qj, dqj, and action in obs to policy joint order
-                # qj_reordered = qj[MUJOCO_TO_POLICY].copy()
-                # obs[9 : 9 + num_actions] = qj_reordered
+                # Reorder qj, dqj, and action in obs to policy joint order
+                qj_reordered = qj[MUJOCO_TO_POLICY].copy()
+                obs[9 : 9 + num_actions] = qj_reordered
 
-                # dqj_reordered = dqj[MUJOCO_TO_POLICY].copy()
-                # obs[9 + num_actions : 9 + 2 * num_actions] = dqj_reordered
+                dqj_reordered = dqj[MUJOCO_TO_POLICY].copy()
+                obs[9 + num_actions : 9 + 2 * num_actions] = dqj_reordered
 
-                # action_reordered_obs = action[MUJOCO_TO_POLICY].copy()
-                # obs[9 + 2 * num_actions : 9 + 3 * num_actions] = action_reordered_obs
+                action_reordered_obs = action[MUJOCO_TO_POLICY].copy()
+                obs[9 + 2 * num_actions : 9 + 3 * num_actions] = action_reordered_obs
                 
-                # obs_tensor = torch.from_numpy(obs[:-2]).unsqueeze(0)
+                obs_tensor = torch.from_numpy(obs[:-2]).unsqueeze(0)
                 # -------------------------------------------
                 
                 # policy inference
                 action = policy(obs_tensor).detach().numpy().squeeze()
                 
                 # -------------------------------------------
-                # # Reorder action to match mujoco joint order
-                # action_reordered = action[POLICY_TO_MUJOCO].copy()
-                # action = action_reordered
+                # Reorder action to match mujoco joint order
+                action_reordered = action[POLICY_TO_MUJOCO].copy()
+                action = action_reordered
                 # -------------------------------------------
                 
                 # transform action to target_dof_pos

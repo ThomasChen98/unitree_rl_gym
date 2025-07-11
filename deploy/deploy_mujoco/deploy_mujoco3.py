@@ -615,3 +615,64 @@ if __name__ == "__main__":
             )
 
             # Current joint pos
+            # Current joint positions (27 DOF: 12 lower + 15 upper)
+            current_joint_pos = d.qpos[7:34]  # Skip floating base (7 DOF)
+            current_joint_vel = d.qvel[6:33]  # Skip floating base (6 DOF)
+
+            # Compute control torques using PD control
+            tau = pd_control(
+                all_target_dof_pos,
+                current_joint_pos,
+                all_kps,
+                np.zeros_like(all_kds),
+                current_joint_vel,
+                all_kds,
+            )
+
+            # Apply control torques
+            d.ctrl[:] = tau
+
+            # Step physics
+            mujoco.mj_step(m, d)
+            counter += 1
+
+            # Update control at decimated frequency
+            if counter % control_decimation == 0:
+                # Generate upper body trajectory
+                upper_target_dof_pos = generate_upper_body_trajectory(
+                    current_time, config, trajectory_type
+                )
+                upper_target_dof_pos += upper_default_angles
+
+                # Create observations for policy (lower body only)
+                obs = extract_observations(
+                    d, lower_default_angles, config, lower_action, current_time
+                )
+
+                # Get action from policy
+                obs_tensor = torch.from_numpy(obs).unsqueeze(0)
+                lower_action = policy(obs_tensor).detach().numpy().squeeze()
+                lower_action = lower_action[: config["num_actions"]]
+
+                # Transform action to target positions for lower body
+                lower_target_dof_pos = (
+                    lower_action * config["action_scale"] + lower_default_angles
+                )
+
+                # Debug output
+                debug_freq = control_decimation * 10
+                if counter % debug_freq == 0:  # Print every 10 control steps
+                    print(f"Time: {current_time:.2f}s")
+                    print(f"Lower body targets: {lower_target_dof_pos[:6]}")
+                    print(f"Upper body targets: {upper_target_dof_pos[:4]}")
+                    print("---")
+
+            # Sync viewer
+            viewer.sync()
+
+            # Time keeping
+            time_until_next_step = m.opt.timestep - (time.time() - step_start)
+            if time_until_next_step > 0:
+                time.sleep(time_until_next_step)
+
+    print("Simulation completed!")

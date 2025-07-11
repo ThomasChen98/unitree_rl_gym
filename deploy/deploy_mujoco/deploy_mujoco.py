@@ -6,9 +6,10 @@ import numpy as np
 from legged_gym import LEGGED_GYM_ROOT_DIR
 import torch
 import yaml
+import pdb
 
 
-# Joint orders
+# # Joint orders
 POLICY_JOINT_ORDER = [
     'left_hip_yaw_joint', 'right_hip_yaw_joint', 'torso_joint',
     'left_hip_pitch_joint', 'right_hip_pitch_joint',
@@ -24,6 +25,19 @@ POLICY_JOINT_ORDER = [
     'left_wrist_pitch_joint', 'right_wrist_pitch_joint',
     'left_wrist_yaw_joint', 'right_wrist_yaw_joint'
 ]
+# POLICY_JOINT_ORDER =[
+#     'left_hip_yaw_joint', 'left_hip_pitch_joint', 'left_hip_roll_joint',
+#     'left_knee_joint', 'left_ankle_pitch_joint', 'left_ankle_roll_joint',
+#     'right_hip_yaw_joint', 'right_hip_pitch_joint', 'right_hip_roll_joint', 
+#     'right_knee_joint', 'right_ankle_pitch_joint', 'right_ankle_roll_joint',
+#     'torso_joint', 
+#     'left_shoulder_pitch_joint', 'left_shoulder_roll_joint', 'left_shoulder_yaw_joint', 
+#     'left_elbow_pitch_joint', 'left_elbow_roll_joint', 
+#     'left_wrist_pitch_joint', 'left_wrist_yaw_joint', 
+#     'right_shoulder_pitch_joint', 'right_shoulder_roll_joint', 'right_shoulder_yaw_joint',
+#     'right_elbow_pitch_joint', 'right_elbow_roll_joint',
+#     'right_wrist_pitch_joint', 'right_wrist_yaw_joint'
+# ]
 
 MUJOCO_JOINT_ORDER = [
     'left_hip_yaw_joint', 'left_hip_pitch_joint', 'left_hip_roll_joint',
@@ -38,6 +52,7 @@ MUJOCO_JOINT_ORDER = [
     'right_elbow_pitch_joint', 'right_elbow_roll_joint',
     'right_wrist_pitch_joint', 'right_wrist_yaw_joint'
 ]
+
 
 # Create mapping indices
 POLICY_TO_MUJOCO = [POLICY_JOINT_ORDER.index(joint) for joint in MUJOCO_JOINT_ORDER]
@@ -147,7 +162,8 @@ if __name__ == "__main__":
 
         num_actions = config["num_actions"]
         num_obs = config["num_obs"]
-        
+        print(f"Number of actions: {num_actions}")
+        print(f"Number of observations: {num_obs}")
         cmd = np.array(config["cmd_init"], dtype=np.float32)
 
     # define context variables

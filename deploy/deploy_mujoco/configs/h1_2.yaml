@@ -1,8 +1,10 @@
 # 
-policy_path: "{LEGGED_GYM_ROOT_DIR}/deploy/pre_train/h1_2/motion.pt"
-# policy_path: "{LEGGED_GYM_ROOT_DIR}/logs/h1_2/exported/policies/policy_lstm_1.pt"
+# policy_path: "{LEGGED_GYM_ROOT_DIR}/deploy/pre_train/h1_2/motion.pt"
+policy_path: "{LEGGED_GYM_ROOT_DIR}/logs/h1_2/exported/policies/policy_lstm_1.pt"
 # policy_path: "/home/yuxin/msc_humanoid/logs/rsl_rl/h12_flat/2025-01-14_20-29-04/exported/policy.pt"
+# policy_path: "/home/yuxin/msc_humanoid/logs/rsl_rl/h12_flat/2025-07-10_15-47-37/exported/policy.pt"
 xml_path: "{LEGGED_GYM_ROOT_DIR}/resources/robots/h1_2/scene.xml"
+#xml_path: "{LEGGED_GYM_ROOT_DIR}/resources/robots/h1_2/h1_2_12dof.xml"
 
 # Total simulation time
 simulation_duration: 60.0
@@ -15,9 +17,13 @@ kps: [200, 200, 200, 300, 40, 40,
       200, 200, 200, 300, 40, 40]
 kds: [2.5, 2.5, 2.5, 4, 2, 2,  
       2.5, 2.5, 2.5, 4, 2, 2]
+# kps: [0, 0, 0, 0, 0, 0, 0, 200, 200, 200, 300, 40, 40, 200, 200, 200, 300, 40, 40, 0, 0, 0, 0, 0, 0, 0, 0]
+# kds: [0, 0, 0, 0, 0, 0, 0, 2.5, 2.5, 2.5, 4, 2, 2, 2.5, 2.5, 2.5, 4, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0]
 
 default_angles: [0, -0.16, 0.0, 0.36, -0.2, 0.0, 
-                 0, -0.16, 0.0, 0.36, -0.2, 0.0]
+                 0, -0.16, 0.0, 0.36, -0.2, 0.0,
+                 ]
+               
 
 ang_vel_scale: 0.25
 dof_pos_scale: 1.0

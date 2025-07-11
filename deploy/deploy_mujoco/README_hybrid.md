@@ -86,18 +86,66 @@
 
 ## 运行方法
 
-### 方法1：使用脚本
+### 方法1：使用便捷脚本
 ```bash
 cd /home/yuxin/unitree_rl_gym/deploy/deploy_mujoco
-chmod +x run_hybrid_deploy.sh
+
+# 使用默认轨迹（圆周运动）
 ./run_hybrid_deploy.sh
+
+# 使用指定轨迹
+./run_hybrid_deploy.sh waving     # 挥手打招呼
+./run_hybrid_deploy.sh taichi     # 太极推手
+./run_hybrid_deploy.sh boxing     # 拳击动作
+./run_hybrid_deploy.sh dancing    # 舞蹈动作
+./run_hybrid_deploy.sh stretching # 拉伸动作
 ```
 
 ### 方法2：直接运行Python
 ```bash
 cd /home/yuxin/unitree_rl_gym/deploy/deploy_mujoco
+
+# 使用默认轨迹
 python deploy_mujoco3.py h1_2_hybrid.yaml
+
+# 使用指定轨迹
+python deploy_mujoco3.py h1_2_hybrid.yaml --trajectory waving
+python deploy_mujoco3.py h1_2_hybrid.yaml -t taichi
 ```
+
+### 方法3：轨迹演示模式
+```bash
+cd /home/yuxin/unitree_rl_gym/deploy/deploy_mujoco
+
+# 依次演示所有轨迹（每个10秒）
+./demo_all_trajectories.sh
+```
+
+## 可用轨迹类型
+
+### 1. `circles` - 双臂圆周运动（默认）
+- 手臂做圆周运动，配合躯干前弯
+- 参数可在配置文件中调节
+
+### 2. `waving` - 挥手打招呼
+- 右臂抬起挥手，左臂自然下垂
+- 适合测试单臂动作
+
+### 3. `taichi` - 太极推手
+- 缓慢的推拉动作，左右臂交替
+- 躯干轻微转动配合
+
+### 4. `boxing` - 拳击动作
+- 交替出拳动作
+- 躯干前倾的拳击姿势
+
+### 5. `dancing` - 舞蹈动作
+- 双臂协调摆动
+- 复杂的多关节协调运动
+
+### 6. `stretching` - 拉伸动作
+- 20秒循环的多阶段拉伸
+- 包含向上拉伸、侧弯、前后拉伸等
 
 ## 自定义轨迹
 

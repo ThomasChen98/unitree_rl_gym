@@ -7,7 +7,14 @@ from legged_gym import LEGGED_GYM_ROOT_DIR
 import torch
 import yaml
 import pdb
-
+# POLICY_JOINT_ORDER = [
+#     'left_hip_yaw_joint', 'right_hip_yaw_joint', 
+#     'left_hip_pitch_joint', 'right_hip_pitch_joint',
+#     'left_hip_roll_joint', 'right_hip_roll_joint',
+#     'left_knee_joint', 'right_knee_joint',
+#     'left_ankle_pitch_joint', 'right_ankle_pitch_joint',
+#     'left_ankle_roll_joint', 'right_ankle_roll_joint',
+# ]
 
 # # Joint orders
 POLICY_JOINT_ORDER = [
@@ -52,6 +59,12 @@ MUJOCO_JOINT_ORDER = [
     'right_elbow_pitch_joint', 'right_elbow_roll_joint',
     'right_wrist_pitch_joint', 'right_wrist_yaw_joint'
 ]
+# MUJOCO_JOINT_ORDER = [
+#     'left_hip_yaw_joint', 'left_hip_pitch_joint', 'left_hip_roll_joint',
+#     'left_knee_joint', 'left_ankle_pitch_joint', 'left_ankle_roll_joint',
+#     'right_hip_yaw_joint', 'right_hip_pitch_joint', 'right_hip_roll_joint', 
+#     'right_knee_joint', 'right_ankle_pitch_joint', 'right_ankle_roll_joint',
+# ]
 
 
 # Create mapping indices

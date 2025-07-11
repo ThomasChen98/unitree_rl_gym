@@ -31,8 +31,8 @@ lower_body_default_angles: [0, -0.16, 0.0, 0.36, -0.2, 0.0,
 
 # Default angles for upper body (15 DOF)
 upper_body_default_angles: [0.0,  # torso
-                           0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,  # left arm
-                           0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  # right arm
+                           0.0, 0.0, 0.0, 1.5, 0.0, 0.0, 0.0,  # left arm
+                           0.0, 0.0, 0.0, 1.5, 0.0, 0.0, 0.0]  # right arm
 
 # Policy parameters (same as original for lower body)
 ang_vel_scale: 0.25
@@ -43,7 +43,7 @@ cmd_scale: [2.0, 2.0, 0.25]
 num_actions: 12  # Only lower body actions from policy
 num_obs: 47
 
-cmd_init: [1, 0, 0]
+cmd_init: [0, 0, 0]
 
 # Upper body trajectory parameters
 trajectory_amplitude: 0.5  # Amplitude for arm circular motion (radians)

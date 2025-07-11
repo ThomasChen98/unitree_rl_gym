@@ -240,17 +240,207 @@ def trajectory_stretching(time_sim, config):
     return upper_body_targets
 
 
+def trajectory_random_motion(time_sim, config):
+    """随机动作 - 每个关节随机小幅度变化"""
+    import random
+
+    upper_body_targets = np.zeros(15)
+
+    # 随机动作的参数
+    base_amplitude = 0.3  # 基础随机幅度
+    freq_variation = 0.5  # 频率变化范围
+
+    # 为每个关节生成不同的随机种子（基于时间）
+    random.seed(int(time_sim * 1000) % 10000)
+
+    # 躯干随机轻微摆动
+    upper_body_targets[0] = base_amplitude * 0.5 * (random.random() - 0.5)
+
+    # 左臂随机动作
+    for i in range(1, 8):
+        # 每个关节有不同的随机变化
+        random_factor = random.random() - 0.5  # -0.5 到 0.5
+        time_factor = math.sin(
+            2 * math.pi * (0.2 + freq_variation * random.random()) * time_sim
+        )
+
+        if i == 1:  # 左肩pitch - 更大范围
+            upper_body_targets[i] = base_amplitude * 2.0 * random_factor * time_factor
+        elif i == 2:  # 左肩roll - 中等范围
+            upper_body_targets[i] = base_amplitude * 1.5 * random_factor * time_factor
+        elif i == 4:  # 左肘 - 保持正值避免过度伸展
+            upper_body_targets[i] = (
+                abs(base_amplitude * random_factor * time_factor) + 0.1
+            )
+        else:  # 其他关节
+            upper_body_targets[i] = base_amplitude * random_factor * time_factor
+
+    # 右臂随机动作（使用不同的随机种子）
+    for i in range(8, 15):
+        random_factor = random.random() - 0.5
+        time_factor = math.sin(
+            2 * math.pi * (0.15 + freq_variation * random.random()) * time_sim
+        )
+
+        if i == 8:  # 右肩pitch - 更大范围
+            upper_body_targets[i] = base_amplitude * 2.0 * random_factor * time_factor
+        elif i == 9:  # 右肩roll - 中等范围，负值
+            upper_body_targets[i] = -base_amplitude * 1.5 * random_factor * time_factor
+        elif i == 11:  # 右肘 - 保持正值避免过度伸展
+            upper_body_targets[i] = (
+                abs(base_amplitude * random_factor * time_factor) + 0.1
+            )
+        else:  # 其他关节
+            upper_body_targets[i] = base_amplitude * random_factor * time_factor
+
+    return upper_body_targets
+
+
+# ========== 静止动作函数 ==========
+
+
+def pose_arms_forward(time_sim, config):
+    """静止动作1: 双臂前伸"""
+    upper_body_targets = np.zeros(15)
+
+    # 躯干保持直立
+    upper_body_targets[0] = 0.0
+
+    # 左臂前伸
+    upper_body_targets[1] = -2.0  # 肩膀前伸
+    upper_body_targets[2] = 0.0  # 肩膀内外旋
+    upper_body_targets[3] = 0.0  # 肩膀俯仰
+    upper_body_targets[4] = 0.0  # 肘部伸直
+    upper_body_targets[5:8] = 0.0  # 手腕保持中性
+
+    # 右臂前伸（镜像）
+    upper_body_targets[8] = -2.0  # 肩膀前伸
+    upper_body_targets[9] = 0.0  # 肩膀内外旋
+    upper_body_targets[10] = 0.0  # 肩膀俯仰
+    upper_body_targets[11] = 0.0  # 肘部伸直
+    upper_body_targets[12:15] = 0.0  # 手腕保持中性
+
+    return upper_body_targets
+
+
+def pose_left_down_right_forward(time_sim, config):
+    """静止动作2: 左臂下垂，右臂前伸"""
+    upper_body_targets = np.zeros(15)
+
+    # 躯干保持直立
+    upper_body_targets[0] = 0.0
+
+    # 左臂自然下垂
+    upper_body_targets[1:8] = 0.0
+
+    # 右臂前伸
+    upper_body_targets[8] = -2.0  # 肩膀前伸
+    upper_body_targets[9] = 0.0  # 肩膀内外旋
+    upper_body_targets[10] = 0.0  # 肩膀俯仰
+    upper_body_targets[11] = 0.0  # 肘部伸直
+    upper_body_targets[12:15] = 0.0  # 手腕保持中性
+
+    return upper_body_targets
+
+
+def pose_t_shape(time_sim, config):
+    """静止动作3: 双臂侧向张开，成十字架状"""
+    upper_body_targets = np.zeros(15)
+
+    # 躯干保持直立
+    upper_body_targets[0] = 0.0
+
+    # 左臂侧向张开
+    upper_body_targets[1] = 0.0  # 肩膀不前伸
+    upper_body_targets[2] = 1.57  # 肩膀外展90度
+    upper_body_targets[3] = 0.0  # 肩膀俯仰
+    upper_body_targets[4] = 0.0  # 肘部伸直
+    upper_body_targets[5:8] = 0.0  # 手腕保持中性
+
+    # 右臂侧向张开（镜像）
+    upper_body_targets[8] = 0.0  # 肩膀不前伸
+    upper_body_targets[9] = -1.57  # 肩膀外展90度
+    upper_body_targets[10] = 0.0  # 肩膀俯仰
+    upper_body_targets[11] = 0.0  # 肘部伸直
+    upper_body_targets[12:15] = 0.0  # 手腕保持中性
+
+    return upper_body_targets
+
+
+def pose_left_down_right_side(time_sim, config):
+    """静止动作4: 左臂下垂，右臂侧向张开"""
+    upper_body_targets = np.zeros(15)
+
+    # 躯干保持直立
+    upper_body_targets[0] = 0.0
+
+    # 左臂自然下垂
+    upper_body_targets[1:8] = 0.0
+
+    # 右臂侧向张开
+    upper_body_targets[8] = 0.0  # 肩膀不前伸
+    upper_body_targets[9] = -1.57  # 肩膀外展90度
+    upper_body_targets[10] = 0.0  # 肩膀俯仰
+    upper_body_targets[11] = 0.0  # 肘部伸直
+    upper_body_targets[12:15] = 0.0  # 手腕保持中性
+
+    return upper_body_targets
+
+
+def pose_torso_side_twist(time_sim, config):
+    """静止动作5: 躯干向前扭转（绕z轴）"""
+    upper_body_targets = np.zeros(15)
+
+    # 躯干向前扭转30度
+    upper_body_targets[0] = 1.57  # 绕y轴前倾
+
+    # 双臂自然下垂
+    upper_body_targets[1:8] = 0.0
+    upper_body_targets[8:15] = 0.0
+
+    return upper_body_targets
+
+
+def pose_left_up_right_down(time_sim, config):
+    """静止动作6: 左臂上举，右臂下垂"""
+    upper_body_targets = np.zeros(15)
+
+    # 躯干保持直立
+    upper_body_targets[0] = 0.0
+
+    # 左臂上举
+    upper_body_targets[1] = -3.0  # 肩膀后伸（向上举）
+    upper_body_targets[2] = 0.0  # 肩膀内外旋
+    upper_body_targets[3] = 0.0  # 肩膀俯仰
+    upper_body_targets[4] = 0.0  # 肘部伸直
+    upper_body_targets[5:8] = 0.0  # 手腕保持中性
+
+    # 右臂自然下垂
+    upper_body_targets[8:15] = 0.0
+
+    return upper_body_targets
+
+
 def generate_upper_body_trajectory(time_sim, config, trajectory_type="circles"):
     """Generate predefined trajectories for upper body joints"""
 
     # 轨迹选择字典
     trajectory_functions = {
+        # 动态轨迹
         "circles": trajectory_arm_circles,
         "waving": trajectory_waving_hello,
         "taichi": trajectory_tai_chi,
         "boxing": trajectory_boxing,
         "dancing": trajectory_dancing,
         "stretching": trajectory_stretching,
+        "random": trajectory_random_motion,
+        # 静止上身动作
+        "pose_arms_forward": pose_arms_forward,
+        "pose_left_down_right_forward": pose_left_down_right_forward,
+        "pose_t_shape": pose_t_shape,
+        "pose_left_down_right_side": pose_left_down_right_side,
+        "pose_torso_side_twist": pose_torso_side_twist,
+        "pose_left_up_right_down": pose_left_up_right_down,
     }
 
     # 获取对应的轨迹函数
@@ -319,7 +509,23 @@ if __name__ == "__main__":
         "-t",
         type=str,
         default="circles",
-        choices=["circles", "waving", "taichi", "boxing", "dancing", "stretching"],
+        choices=[
+            # 动态轨迹
+            "circles",
+            "waving",
+            "taichi",
+            "boxing",
+            "dancing",
+            "stretching",
+            "random",
+            # 静止上身动作
+            "pose_arms_forward",
+            "pose_left_down_right_forward",
+            "pose_t_shape",
+            "pose_left_down_right_side",
+            "pose_torso_side_twist",
+            "pose_left_up_right_down",
+        ],
         help="Upper body trajectory type (default: circles)",
     )
     args = parser.parse_args()
@@ -408,64 +614,4 @@ if __name__ == "__main__":
                 [lower_target_dof_pos, upper_target_dof_pos]
             )
 
-            # Current joint positions (27 DOF: 12 lower + 15 upper)
-            current_joint_pos = d.qpos[7:34]  # Skip floating base (7 DOF)
-            current_joint_vel = d.qvel[6:33]  # Skip floating base (6 DOF)
-
-            # Compute control torques using PD control
-            tau = pd_control(
-                all_target_dof_pos,
-                current_joint_pos,
-                all_kps,
-                np.zeros_like(all_kds),
-                current_joint_vel,
-                all_kds,
-            )
-
-            # Apply control torques
-            d.ctrl[:] = tau
-
-            # Step physics
-            mujoco.mj_step(m, d)
-            counter += 1
-
-            # Update control at decimated frequency
-            if counter % control_decimation == 0:
-                # Generate upper body trajectory
-                upper_target_dof_pos = generate_upper_body_trajectory(
-                    current_time, config, trajectory_type
-                )
-                upper_target_dof_pos += upper_default_angles
-
-                # Create observations for policy (lower body only)
-                obs = extract_observations(
-                    d, lower_default_angles, config, lower_action, current_time
-                )
-
-                # Get action from policy
-                obs_tensor = torch.from_numpy(obs).unsqueeze(0)
-                lower_action = policy(obs_tensor).detach().numpy().squeeze()
-                lower_action = lower_action[: config["num_actions"]]
-
-                # Transform action to target positions for lower body
-                lower_target_dof_pos = (
-                    lower_action * config["action_scale"] + lower_default_angles
-                )
-
-                # Debug output
-                debug_freq = control_decimation * 10
-                if counter % debug_freq == 0:  # Print every 10 control steps
-                    print(f"Time: {current_time:.2f}s")
-                    print(f"Lower body targets: {lower_target_dof_pos[:6]}")
-                    print(f"Upper body targets: {upper_target_dof_pos[:4]}")
-                    print("---")
-
-            # Sync viewer
-            viewer.sync()
-
-            # Time keeping
-            time_until_next_step = m.opt.timestep - (time.time() - step_start)
-            if time_until_next_step > 0:
-                time.sleep(time_until_next_step)
-
-    print("Simulation completed!")
+            # Current joint pos

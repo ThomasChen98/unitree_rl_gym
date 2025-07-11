@@ -28,63 +28,114 @@ def pd_control(target_q, q, kp, target_dq, dq, kd):
     return (target_q - q) * kp + (target_dq - dq) * kd
 
 
-def trajectory_arm_circles(time_sim, config):
-    """双臂圆周运动 - 原始实现"""
-    traj_amp = config["trajectory_amplitude"]
-    traj_freq = config["trajectory_frequency"]
-    torso_amp = config["torso_bend_amplitude"]
-    torso_freq = config["torso_bend_frequency"]
-    arm_offset = config["arm_forward_offset"]
+def trajectory_2arm_circles(time_sim, config):
+    """双臂简单前后摆动"""
+    traj_amp = 1.2  # 摆动幅度
+    traj_freq = 0.8  # 摆动频率
+    arm_offset = 0.0  # 中心位置
 
-    phase = 2 * math.pi * traj_freq * time_sim
-    torso_phase = 2 * math.pi * torso_freq * time_sim
-
-    upper_body_targets = np.zeros(15)
-
-    # Torso joint: forward bending motion
-    upper_body_targets[0] = torso_amp * math.sin(torso_phase)
-
-    # Left arm joints
-    upper_body_targets[1] = arm_offset + traj_amp * math.sin(phase)
-    upper_body_targets[2] = 0.3 * math.sin(phase)
-    upper_body_targets[3] = 0.0
-    upper_body_targets[4] = 1.2 + 0.3 * math.cos(phase)
-    upper_body_targets[5] = 0.0
-    upper_body_targets[6] = 0.0
-    upper_body_targets[7] = 0.0
-
-    # Right arm joints - mirror left arm
-    upper_body_targets[8] = arm_offset + traj_amp * math.sin(phase)
-    upper_body_targets[9] = -0.3 * math.sin(phase)
-    upper_body_targets[10] = 0.0
-    upper_body_targets[11] = 1.2 + 0.3 * math.cos(phase)
-    upper_body_targets[12] = 0.0
-    upper_body_targets[13] = 0.0
-    upper_body_targets[14] = 0.0
-
-    return upper_body_targets
-
-
-def trajectory_waving_hello(time_sim, config):
-    """挥手打招呼"""
-    wave_freq = 2.0  # 2Hz 挥手频率
-    wave_phase = 2 * math.pi * wave_freq * time_sim
+    # 计算摆动角度：中心位置 ± 幅度
+    swing_angle = traj_amp * math.sin(traj_freq * time_sim)
 
     upper_body_targets = np.zeros(15)
 
     # 躯干保持直立
     upper_body_targets[0] = 0.0
 
-    # 左臂自然下垂
-    upper_body_targets[1:8] = 0.0
+    # 左臂：肩部前后摆动，其他关节保持固定
+    upper_body_targets[1] = arm_offset - swing_angle  # 肩部前后摆动
+    upper_body_targets[2] = 0.3  # 肩部侧向固定角度
+    upper_body_targets[3:8] = 0.0  # 其他关节保持中性
+
+    # 右臂：与左臂同步摆动
+    upper_body_targets[8] = arm_offset - swing_angle  # 肩部前后摆动
+    upper_body_targets[9] = -0.3  # 肩部侧向固定角度（镜像）
+    upper_body_targets[10:15] = 0.0  # 其他关节保持中性
+
+    return upper_body_targets
+
+
+def trajectory_1arm_circles(time_sim, config):
+    traj_amp = 1.2  # 摆动幅度
+    traj_freq = 0.8  # 摆动频率
+    arm_offset = 0.0  # 中心位置
+
+    # 计算摆动角度：中心位置 ± 幅度
+    swing_angle = traj_amp * math.sin(traj_freq * time_sim)
+
+    upper_body_targets = np.zeros(15)
+
+    # 躯干保持直立
+    upper_body_targets[0] = 0.0
+
+    # 左臂：肩部前后摆动，其他关节保持固定
+    upper_body_targets[1] = arm_offset - swing_angle  # 肩部前后摆动
+    upper_body_targets[2] = 0.3  # 肩部侧向固定角度
+    upper_body_targets[3:8] = 0.0  # 其他关节保持中性
+
+    # 右臂：保持静止
+    upper_body_targets[8] = 0.0  # 肩部保持中性
+    upper_body_targets[9] = -0.3  # 肩部侧向固定角度（镜像）
+    upper_body_targets[10:15] = 0.0  # 其他关节保持中性
+
+    return upper_body_targets
+
+
+def trajectory_waving_hello_2arm(time_sim, config):
+    """挥手打招呼"""
+    wave_amp = 2.0  # 挥手幅度
+    wave_freq = 0.5  # 2Hz 挥手频率
+    wave_offset = 0.3
+
+    upper_body_targets = np.zeros(15)
+
+    # 躯干保持直立
+    upper_body_targets[0] = 0.0
+
+    upper_body_targets[1] = 0.0
+    upper_body_targets[2] = wave_offset + wave_amp * abs(math.sin(
+        wave_freq * time_sim)
+    )  # 左肩膀前后摆动
+    upper_body_targets[3:8] = 0.0  # 左肩膀俯仰
 
     # 右臂挥手动作
-    upper_body_targets[8] = 1.2  # 肩膀抬起
-    upper_body_targets[9] = -0.8  # 肩膀外展
+    upper_body_targets[8] = 0.0  # 肩膀抬起
+    upper_body_targets[9] = -wave_offset -wave_amp *abs( math.sin(
+        wave_freq * time_sim)
+    )  # 左肩膀前后摆动
     upper_body_targets[10] = 0.0
-    upper_body_targets[11] = 1.0  # 肘部弯曲
+    upper_body_targets[11] = 0.0  # 肘部弯曲
     upper_body_targets[12] = 0.0
-    upper_body_targets[13] = 0.3 * math.sin(wave_phase)  # 手腕左右摆动
+    upper_body_targets[13] = 0.0  # 手腕左右摆动
+    upper_body_targets[14] = 0.0
+
+    return upper_body_targets
+
+
+def trajectory_waving_hello_1arm(time_sim, config):
+    """挥手打招呼"""
+    wave_amp = 2.0  # 挥手幅度
+    wave_freq = 0.5 # 2Hz 挥手频率
+    wave_offset = 0.0
+
+    upper_body_targets = np.zeros(15)
+
+    # 躯干保持直立
+    upper_body_targets[0] = 0.0
+
+    upper_body_targets[1] = 0.0
+    upper_body_targets[2] = wave_offset + wave_amp *abs( math.sin(
+        wave_freq * time_sim)
+    )  # 左肩膀前后摆动
+    upper_body_targets[3:8] = 0.0  # 左肩膀俯仰
+
+    # 右臂挥手动作
+    upper_body_targets[8] = 0.0  # 肩膀抬起
+    upper_body_targets[9] = -wave_offset
+    upper_body_targets[10] = 0.0
+    upper_body_targets[11] = 0.0  # 肘部弯曲
+    upper_body_targets[12] = 0.0
+    upper_body_targets[13] = 0.0  # 手腕左右摆动
     upper_body_targets[14] = 0.0
 
     return upper_body_targets
@@ -104,17 +155,17 @@ def trajectory_tai_chi(time_sim, config):
     push_amplitude = 0.6
 
     # 左臂
-    upper_body_targets[1] = 0.8 + push_amplitude * math.sin(phase)
+    upper_body_targets[1] = -0.8-push_amplitude * math.sin(phase)
     upper_body_targets[2] = 0.3
     upper_body_targets[3] = 0.2 * math.sin(phase)
-    upper_body_targets[4] = 1.0 - 0.3 * math.sin(phase)
+    upper_body_targets[4] = -1.0 +0.5* math.sin(phase)
     upper_body_targets[5:8] = 0.0
 
     # 右臂（相位相反）
-    upper_body_targets[8] = 0.8 + push_amplitude * math.sin(phase + math.pi)
+    upper_body_targets[8] =  -0.8-push_amplitude * math.sin(phase + math.pi)
     upper_body_targets[9] = -0.3
     upper_body_targets[10] = -0.2 * math.sin(phase + math.pi)
-    upper_body_targets[11] = 1.0 - 0.3 * math.sin(phase + math.pi)
+    upper_body_targets[11] =-1.0 + 0.5 * math.sin(phase + math.pi)
     upper_body_targets[12:15] = 0.0
 
     return upper_body_targets
@@ -171,25 +222,25 @@ def trajectory_dancing(time_sim, config):
     upper_body_targets = np.zeros(15)
 
     # 躯干左右摆动
-    upper_body_targets[0] = 0.2 * math.sin(phase * 0.5)
+    upper_body_targets[0] = 0.3 * math.sin(phase * 0.5)
 
     # 双臂协调摆动
-    arm_swing = 0.8
+    arm_swing = 2.0
 
     # 左臂
-    upper_body_targets[1] = 0.5 + arm_swing * math.sin(phase)
+    upper_body_targets[1] = -0.5 - arm_swing * math.sin(phase)
     upper_body_targets[2] = 0.5 + 0.3 * math.cos(phase)
     upper_body_targets[3] = 0.3 * math.sin(phase * 2)
-    upper_body_targets[4] = 0.5 + 0.5 * math.sin(phase + math.pi / 4)
+    upper_body_targets[4] = -0.5 - 0.5 * math.sin(phase + math.pi / 4)
     upper_body_targets[5] = 0.0
     upper_body_targets[6] = 0.2 * math.sin(phase * 3)
     upper_body_targets[7] = 0.0
 
     # 右臂（稍有不同的相位）
-    upper_body_targets[8] = 0.5 + arm_swing * math.sin(phase + math.pi / 3)
+    upper_body_targets[8] =-0.5 - arm_swing * math.sin(phase + math.pi / 3)
     upper_body_targets[9] = -0.5 - 0.3 * math.cos(phase + math.pi / 3)
     upper_body_targets[10] = -0.3 * math.sin(phase * 2 + math.pi / 3)
-    upper_body_targets[11] = 0.5 + 0.5 * math.sin(phase + math.pi / 4 + math.pi / 3)
+    upper_body_targets[11] = -0.5 -0.5 * math.sin(phase + math.pi / 4 + math.pi / 3)
     upper_body_targets[12] = 0.0
     upper_body_targets[13] = -0.2 * math.sin(phase * 3 + math.pi / 3)
     upper_body_targets[14] = 0.0
@@ -197,101 +248,9 @@ def trajectory_dancing(time_sim, config):
     return upper_body_targets
 
 
-def trajectory_stretching(time_sim, config):
-    """拉伸动作"""
-    stretch_freq = 0.1  # 很慢的拉伸频率
-    phase = 2 * math.pi * stretch_freq * time_sim
-
-    upper_body_targets = np.zeros(15)
-
-    # 根据时间切换不同的拉伸动作
-    cycle_time = time_sim % 20.0  # 20秒一个循环
-
-    if cycle_time < 5.0:
-        # 双臂向上拉伸
-        stretch_amount = 0.5 * (1 + math.sin(phase))
-        upper_body_targets[0] = -0.1  # 躯干稍微后仰
-        upper_body_targets[1] = -1.0 + stretch_amount * 2.0
-        upper_body_targets[8] = -1.0 + stretch_amount * 2.0
-        upper_body_targets[2] = stretch_amount * 0.3
-        upper_body_targets[9] = -stretch_amount * 0.3
-    elif cycle_time < 10.0:
-        # 左右侧弯
-        side_bend = 0.3 * math.sin(phase * 2)
-        upper_body_targets[0] = side_bend
-        upper_body_targets[1] = 1.2
-        upper_body_targets[8] = 1.2
-        upper_body_targets[2] = 0.5 + side_bend
-        upper_body_targets[9] = -0.5 - side_bend
-    elif cycle_time < 15.0:
-        # 前后拉伸
-        forward_back = 0.4 * math.sin(phase)
-        upper_body_targets[0] = forward_back
-        upper_body_targets[1] = 0.8 + forward_back
-        upper_body_targets[8] = 0.8 + forward_back
-    else:
-        # 放松姿势
-        upper_body_targets[0] = 0.0
-        upper_body_targets[1] = 0.2
-        upper_body_targets[8] = 0.2
-        upper_body_targets[4] = 0.3
-        upper_body_targets[11] = 0.3
-
-    return upper_body_targets
-
-
 def trajectory_random_motion(time_sim, config):
     """随机动作 - 每个关节随机小幅度变化"""
     import random
-
-    upper_body_targets = np.zeros(15)
-
-    # 随机动作的参数
-    base_amplitude = 0.3  # 基础随机幅度
-    freq_variation = 0.5  # 频率变化范围
-
-    # 为每个关节生成不同的随机种子（基于时间）
-    random.seed(int(time_sim * 1000) % 10000)
-
-    # 躯干随机轻微摆动
-    upper_body_targets[0] = base_amplitude * 0.5 * (random.random() - 0.5)
-
-    # 左臂随机动作
-    for i in range(1, 8):
-        # 每个关节有不同的随机变化
-        random_factor = random.random() - 0.5  # -0.5 到 0.5
-        time_factor = math.sin(
-            2 * math.pi * (0.2 + freq_variation * random.random()) * time_sim
-        )
-
-        if i == 1:  # 左肩pitch - 更大范围
-            upper_body_targets[i] = base_amplitude * 2.0 * random_factor * time_factor
-        elif i == 2:  # 左肩roll - 中等范围
-            upper_body_targets[i] = base_amplitude * 1.5 * random_factor * time_factor
-        elif i == 4:  # 左肘 - 保持正值避免过度伸展
-            upper_body_targets[i] = (
-                abs(base_amplitude * random_factor * time_factor) + 0.1
-            )
-        else:  # 其他关节
-            upper_body_targets[i] = base_amplitude * random_factor * time_factor
-
-    # 右臂随机动作（使用不同的随机种子）
-    for i in range(8, 15):
-        random_factor = random.random() - 0.5
-        time_factor = math.sin(
-            2 * math.pi * (0.15 + freq_variation * random.random()) * time_sim
-        )
-
-        if i == 8:  # 右肩pitch - 更大范围
-            upper_body_targets[i] = base_amplitude * 2.0 * random_factor * time_factor
-        elif i == 9:  # 右肩roll - 中等范围，负值
-            upper_body_targets[i] = -base_amplitude * 1.5 * random_factor * time_factor
-        elif i == 11:  # 右肘 - 保持正值避免过度伸展
-            upper_body_targets[i] = (
-                abs(base_amplitude * random_factor * time_factor) + 0.1
-            )
-        else:  # 其他关节
-            upper_body_targets[i] = base_amplitude * random_factor * time_factor
 
     return upper_body_targets
 
@@ -308,14 +267,14 @@ def pose_arms_forward(time_sim, config):
 
     # 左臂前伸
     upper_body_targets[1] = -2.0  # 肩膀前伸
-    upper_body_targets[2] = 0.0  # 肩膀内外旋
+    upper_body_targets[2] = 0.5  # 肩膀内外旋
     upper_body_targets[3] = 0.0  # 肩膀俯仰
     upper_body_targets[4] = 0.0  # 肘部伸直
     upper_body_targets[5:8] = 0.0  # 手腕保持中性
 
     # 右臂前伸（镜像）
     upper_body_targets[8] = -2.0  # 肩膀前伸
-    upper_body_targets[9] = 0.0  # 肩膀内外旋
+    upper_body_targets[9] = -0.5  # 肩膀内外旋
     upper_body_targets[10] = 0.0  # 肩膀俯仰
     upper_body_targets[11] = 0.0  # 肘部伸直
     upper_body_targets[12:15] = 0.0  # 手腕保持中性
@@ -335,7 +294,7 @@ def pose_left_down_right_forward(time_sim, config):
 
     # 右臂前伸
     upper_body_targets[8] = -2.0  # 肩膀前伸
-    upper_body_targets[9] = 0.0  # 肩膀内外旋
+    upper_body_targets[9] = -0.5  # 肩膀内外旋
     upper_body_targets[10] = 0.0  # 肩膀俯仰
     upper_body_targets[11] = 0.0  # 肘部伸直
     upper_body_targets[12:15] = 0.0  # 手腕保持中性
@@ -401,22 +360,22 @@ def pose_torso_side_twist(time_sim, config):
     return upper_body_targets
 
 
-def pose_left_up_right_down(time_sim, config):
-    """静止动作6: 左臂上举，右臂下垂"""
+def pose_arms_up(time_sim, config):
+    """静止动作6: 双臂上举"""
     upper_body_targets = np.zeros(15)
 
     # 躯干保持直立
     upper_body_targets[0] = 0.0
 
-    # 左臂上举
     upper_body_targets[1] = -3.0  # 肩膀后伸（向上举）
-    upper_body_targets[2] = 0.0  # 肩膀内外旋
+    upper_body_targets[2] = 0.5  # 肩膀内外旋
     upper_body_targets[3] = 0.0  # 肩膀俯仰
     upper_body_targets[4] = 0.0  # 肘部伸直
     upper_body_targets[5:8] = 0.0  # 手腕保持中性
 
-    # 右臂自然下垂
-    upper_body_targets[8:15] = 0.0
+    upper_body_targets[8] = -3.0
+    upper_body_targets[9] = -0.5
+    upper_body_targets[10:15] = 0.0
 
     return upper_body_targets
 
@@ -426,9 +385,13 @@ def generate_upper_body_trajectory(time_sim, config, trajectory_type="circles"):
 
     # 轨迹选择字典
     trajectory_functions = {
-        # 动态轨迹
-        "circles": trajectory_arm_circles,
-        "waving": trajectory_waving_hello,
+        # 动态轨迹 - 双臂
+        "2arm_circles": trajectory_2arm_circles,
+        "waving_2arm": trajectory_waving_hello_2arm,
+        # 动态轨迹 - 单臂
+        "1arm_circles": trajectory_1arm_circles,
+        "waving_1arm": trajectory_waving_hello_1arm,
+        # 其他复杂轨迹
         "taichi": trajectory_tai_chi,
         "boxing": trajectory_boxing,
         "dancing": trajectory_dancing,
@@ -440,7 +403,7 @@ def generate_upper_body_trajectory(time_sim, config, trajectory_type="circles"):
         "pose_t_shape": pose_t_shape,
         "pose_left_down_right_side": pose_left_down_right_side,
         "pose_torso_side_twist": pose_torso_side_twist,
-        "pose_left_up_right_down": pose_left_up_right_down,
+        "pose_arms_up": pose_arms_up,
     }
 
     # 获取对应的轨迹函数
@@ -449,9 +412,9 @@ def generate_upper_body_trajectory(time_sim, config, trajectory_type="circles"):
     else:
         print(
             f"Warning: Unknown trajectory type '{trajectory_type}', "
-            f"using default 'circles'"
+            f"using default '2arm_circles'"
         )
-        return trajectory_arm_circles(time_sim, config)
+        return trajectory_2arm_circles(time_sim, config)
 
 
 def extract_observations(d, default_angles, config, action, time_sim):
@@ -508,11 +471,15 @@ if __name__ == "__main__":
         "--trajectory",
         "-t",
         type=str,
-        default="circles",
+        default="2arm_circles",
         choices=[
-            # 动态轨迹
-            "circles",
-            "waving",
+            # 动态轨迹 - 双臂
+            "2arm_circles",
+            "waving_2arm",
+            # 动态轨迹 - 单臂
+            "1arm_circles",
+            "waving_1arm",
+            # 其他复杂轨迹
             "taichi",
             "boxing",
             "dancing",
@@ -524,19 +491,20 @@ if __name__ == "__main__":
             "pose_t_shape",
             "pose_left_down_right_side",
             "pose_torso_side_twist",
-            "pose_left_up_right_down",
+            "pose_arms_up",
         ],
-        help="Upper body trajectory type (default: circles)",
+        help="Upper body trajectory type (default: 2arm_circles)",
     )
     args = parser.parse_args()
     config_file = args.config_file
     trajectory_type = args.trajectory
 
-    print(f"Starting H1_2 hybrid control with '{trajectory_type}' " f"trajectory...")
-    print(
-        "Available trajectories: circles, waving, taichi, boxing, "
-        "dancing, stretching"
-    )
+    print(f"Starting H1_2 hybrid control with '{trajectory_type}' trajectory...")
+    print("Available trajectories:")
+    print("  双臂动作: 2arm_circles, waving_2arm")
+    print("  单臂动作: 1arm_circles, waving_1arm")
+    print("  复杂动作: taichi, boxing, dancing, stretching, random")
+    print("  静止姿态: pose_arms_forward, pose_t_shape, pose_arms_up, etc.")
     print(f"Config file: {config_file}")
     print("=" * 60)
 

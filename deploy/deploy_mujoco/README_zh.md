@@ -91,24 +91,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_forward_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_arms_forward_stand.gif" width="100%" alt="pose_arms_forward_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_forward_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_arms_forward_walk.gif" width="100%" alt="pose_arms_forward_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_forward_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_arms_forward_turn.gif" width="100%" alt="pose_arms_forward_turn">
 </td>
 </tr>
 </table>
@@ -118,24 +109,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_t_shape_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_t_shape_stand.gif" width="100%" alt="pose_t_shape_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_t_shape_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_t_shape_walk.gif" width="100%" alt="pose_t_shape_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_t_shape_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_t_shape_turn.gif" width="100%" alt="pose_t_shape_turn">
 </td>
 </tr>
 </table>
@@ -145,24 +127,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_up_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_arms_up_stand.gif" width="100%" alt="pose_arms_up_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_up_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_arms_up_walk.gif" width="100%" alt="pose_arms_up_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_up_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_arms_up_turn.gif" width="100%" alt="pose_arms_up_turn">
 </td>
 </tr>
 </table>
@@ -172,24 +145,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_forward_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_left_down_right_forward_stand.gif" width="100%" alt="pose_left_down_right_forward_stand">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_forward_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_left_down_right_forward_walk.gif" width="100%" alt="pose_left_down_right_forward_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_forward_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_left_down_right_forward_turn.gif" width="100%" alt="pose_left_down_right_forward_turn">
 </td>
 </tr>
 </table>
@@ -199,24 +163,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_side_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_left_down_right_side_stand.gif" width="100%" alt="pose_left_down_right_side_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_side_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_left_down_right_side_walk.gif" width="100%" alt="pose_left_down_right_side_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_side_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_left_down_right_side_turn.gif" width="100%" alt="pose_left_down_right_side_turn">
 </td>
 </tr>
 </table>
@@ -226,24 +181,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_torso_side_twist_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_torso_side_twist_stand.gif" width="100%" alt="pose_torso_side_twist_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_torso_side_twist_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_torso_side_twist_walk.gif" width="100%" alt="pose_torso_side_twist_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_torso_side_twist_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/pose_torso_side_twist_turn.gif" width="100%" alt="pose_torso_side_twist_turn">
 </td>
 </tr>
 </table>
@@ -255,24 +201,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_circles_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/2arms_circles_stand.gif" width="100%" alt="2arms_circles_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_circles_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/2arms_circles_walk.gif" width="100%" alt="2arms_circles_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_circles_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/2arms_circles_turn.gif" width="100%" alt="2arms_circles_turn">
 </td>
 </tr>
 </table>
@@ -282,24 +219,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_waving_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/2arms_waving_stand.gif" width="100%" alt="2arms_waving_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_waving_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/2arms_waving_walk.gif" width="100%" alt="2arms_waving_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_waving_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/2arms_waving_turn.gif" width="100%" alt="2arms_waving_turn">
 </td>
 </tr>
 </table>
@@ -309,24 +237,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_circles_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/1arm_circles_stand.gif" width="100%" alt="1arm_circles_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_circles_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/1arm_circles_walk.gif" width="100%" alt="1arm_circles_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_circles_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/1arm_circles_turn.gif" width="100%" alt="1arm_circles_turn">
 </td>
 </tr>
 </table>
@@ -336,24 +255,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_waving_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/1arm_waving_stand.gif" width="100%" alt="1arm_waving_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_waving_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/1arm_waving_walk.gif" width="100%" alt="1arm_waving_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_waving_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/1arm_waving_turn.gif" width="100%" alt="1arm_waving_turn">
 </td>
 </tr>
 </table>
@@ -365,24 +275,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/taichi_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/taichi_stand.gif" width="100%" alt="taichi_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/taichi_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/taichi_walk.gif" width="100%" alt="taichi_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/taichi_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/taichi_turn.gif" width="100%" alt="taichi_turn">
 </td>
 </tr>
 </table>
@@ -392,24 +293,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/boxing_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/boxing_stand.gif" width="100%" alt="boxing_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/boxing_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/boxing_walk.gif" width="100%" alt="boxing_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/boxing_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/boxing_turn.gif" width="100%" alt="boxing_turn">
 </td>
 </tr>
 </table>
@@ -419,24 +311,15 @@ MUJOCO_JOINT_ORDER = [
 <tr>
 <td width="33%" align="center">
 <strong>静止站立</strong><br>
-<video width="100%" controls>
-  <source src="demo/random_stand.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/random_stand.gif" width="100%" alt="random_stand">
 </td>
 <td width="33%" align="center">
 <strong>前进行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/random_walk.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/random_walk.gif" width="100%" alt="random_walk">
 </td>
 <td width="33%" align="center">
 <strong>转向行走</strong><br>
-<video width="100%" controls>
-  <source src="demo/random_turn.mp4" type="video/mp4">
-  您的浏览器不支持视频标签。
-</video>
+<img src="demo/random_turn.gif" width="100%" alt="random_turn">
 </td>
 </tr>
 </table>
@@ -445,18 +328,18 @@ MUJOCO_JOINT_ORDER = [
 
 ### 基本用法
 ```bash
-python deploy_mujoco3.py <配置> -t <类型> --cmd <运动命令>
+python deploy_mujoco_hybrid.py <配置> -t <类型> --cmd <运动命令>
 ```
 
 **示例**:
 ```bash
 # 静态姿态
-python deploy_mujoco3.py h1_2_hybrid.yaml -t pose_t_shape
-python deploy_mujoco3.py h1_2_hybrid.yaml -t pose_arms_up --cmd 0.5,0,0.3
+python deploy_mujoco_hybrid.py h1_2_hybrid.yaml -t pose_t_shape
+python deploy_mujoco_hybrid.py h1_2_hybrid.yaml -t pose_arms_up --cmd 0.5,0,0.3
 
 # 动态轨迹  
-python deploy_mujoco3.py h1_2_hybrid.yaml -t 2arms_circles --cmd 1.0,0,0
-python deploy_mujoco3.py h1_2_boxing.yaml -t boxing --cmd 0.6,0.3,0.5
+python deploy_mujoco_hybrid.py h1_2_hybrid.yaml -t 2arms_circles --cmd 1.0,0,0
+python deploy_mujoco_hybrid.py h1_2_boxing.yaml -t boxing --cmd 0.6,0.3,0.5
 #为了更好地展示拳击动作，建议使用`h1_2_boxing.yaml`配置文件。
 ./demo_new_trajectories.sh              # 所有轨迹的演示脚本
 ```

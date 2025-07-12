@@ -330,18 +330,18 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 
 ### Basic Usage
 ```bash
-python deploy_mujoco3.py <config> --trajectory <type> --cmd <motion_command>
+python deploy_mujoco_hybrid.py <config> --trajectory <type> --cmd <motion_command>
 ```
 
 **Examples**:
 ```bash
 # Static poses
-python deploy_mujoco3.py h1_2_hybrid.yaml -t pose_t_shape
-python deploy_mujoco3.py h1_2_hybrid.yaml -t pose_arms_up --cmd 0.5,0,0.3
+python deploy_mujoco_hybrid.py h1_2_hybrid.yaml -t pose_t_shape
+python deploy_mujoco_hybrid.py h1_2_hybrid.yaml -t pose_arms_up --cmd 0.5,0,0.3
 
 # Dynamic trajectories  
-python deploy_mujoco3.py h1_2_hybrid.yaml -t 2arms_circles --cmd 1.0,0,0
-python deploy_mujoco3.py h1_2_boxing.yaml -t boxing --cmd 0.6,0.3,0.5
+python deploy_mujoco_hybrid.py h1_2_hybrid.yaml -t 2arms_circles --cmd 1.0,0,0
+python deploy_mujoco_hybrid.py h1_2_boxing.yaml -t boxing --cmd 0.6,0.3,0.5
 # boxing pose uses different yaml file
 # Batch demonstrations
 ./demo_new_trajectories.sh              # All trajectories

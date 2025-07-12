@@ -344,7 +344,7 @@ python deploy_mujoco_hybrid.py h1_2_hybrid.yaml -t 2arms_circles --cmd 1.0,0,0
 python deploy_mujoco_hybrid.py h1_2_boxing.yaml -t boxing --cmd 0.6,0.3,0.5
 # boxing pose uses different yaml file
 # Batch demonstrations
-./demo_new_trajectories.sh              # All trajectories
+./demo_all_trajectories.sh              # All trajectories
 ```
 
 
@@ -362,8 +362,8 @@ simulation_dt: 0.002
 control_decimation: 10
 
 # Control parameters
-lower_body_kps: [200, 200, 200, 300, 40, 40] × 2  # Left + Right leg
-upper_body_kps: [50, 80, 80, 50, 50, 20, 20, 20] + [80, 80, 50, 50, 20, 20, 20]
+lower_body_kps: [200, 200, 200, 300, 40, 40] * 2  # Left + Right leg
+upper_body_kps: [50] +[80, 80, 50, 50, 20, 20, 20] *2
 ```
 
 ## Development

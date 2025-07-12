@@ -341,7 +341,7 @@ python deploy_mujoco_hybrid.py h1_2_hybrid.yaml -t pose_arms_up --cmd 0.5,0,0.3
 python deploy_mujoco_hybrid.py h1_2_hybrid.yaml -t 2arms_circles --cmd 1.0,0,0
 python deploy_mujoco_hybrid.py h1_2_boxing.yaml -t boxing --cmd 0.6,0.3,0.5
 #为了更好地展示拳击动作，建议使用`h1_2_boxing.yaml`配置文件。
-./demo_new_trajectories.sh              # 所有轨迹的演示脚本
+./demo_all_trajectories.sh              # 所有轨迹的演示脚本
 ```
 
 

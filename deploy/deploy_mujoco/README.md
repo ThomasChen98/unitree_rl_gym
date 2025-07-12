@@ -91,24 +91,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_forward_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_arms_forward_stand.gif" width="100%" alt="pose_arms_forward_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_forward_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_arms_forward_walk.gif" width="100%" alt="pose_arms_forward_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_forward_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_arms_forward_turn.gif" width="100%" alt="pose_arms_forward_turn">
 </td>
 </tr>
 </table>
@@ -118,24 +109,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_t_shape_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_t_shape_stand.gif" width="100%" alt="pose_t_shape_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_t_shape_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_t_shape_walk.gif" width="100%" alt="pose_t_shape_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_t_shape_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_t_shape_turn.gif" width="100%" alt="pose_t_shape_turn">
 </td>
 </tr>
 </table>
@@ -145,25 +127,16 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_up_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_arms_up_stand.gif" width="100%" alt="pose_arms_up_stand">
 </td>
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_up_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_arms_up_walk.gif" width="100%" alt="pose_arms_up_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_arms_up_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_arms_up_turn.gif" width="100%" alt="pose_arms_up_turn">
 </td>
 </tr>
 </table>
@@ -173,24 +146,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_forward_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_left_down_right_forward_stand.gif" width="100%" alt="pose_left_down_right_forward_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_forward_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.    
-</video>
+<img src="demo/pose_left_down_right_forward_walk.gif" width="100%" alt="pose_left_down_right_forward_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_forward_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_left_down_right_forward_turn.gif" width="100%" alt="pose_left_down_right_forward_turn">
 </td>
 </tr>
 </table>
@@ -200,24 +164,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_side_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_left_down_right_side_stand.gif" width="100%" alt="pose_left_down_right_side_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_side_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_left_down_right_side_walk.gif" width="100%" alt="pose_left_down_right_side_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_left_down_right_side_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_left_down_right_side_turn.gif" width="100%" alt="pose_left_down_right_side_turn">
 </td>
 </tr>
 </table>
@@ -227,24 +182,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_torso_side_twist_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_torso_side_twist_stand.gif" width="100%" alt="pose_torso_side_twist_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_torso_side_twist_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_torso_side_twist_walk.gif" width="100%" alt="pose_torso_side_twist_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/pose_torso_side_twist_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/pose_torso_side_twist_turn.gif" width="100%" alt="pose_torso_side_twist_turn">
 </td>
 </tr>
 </table>
@@ -256,24 +202,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_circles_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/2arms_circles_stand.gif" width="100%" alt="2arms_circles_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_circles_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/2arms_circles_walk.gif" width="100%" alt="2arms_circles_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_circles_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/2arms_circles_turn.gif" width="100%" alt="2arms_circles_turn">
 </td>
 </tr>
 </table>
@@ -283,24 +220,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_waving_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/2arms_waving_stand.gif" width="100%" alt="2arms_waving_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_waving_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.  
-</video>
+<img src="demo/2arms_waving_walk.gif" width="100%" alt="2arms_waving_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/2arms_waving_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/2arms_waving_turn.gif" width="100%" alt="2arms_waving_turn">
 </td>
 </tr>
 </table>
@@ -310,24 +238,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_circles_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/1arm_circles_stand.gif" width="100%" alt="1arm_circles_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_circles_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/1arm_circles_walk.gif" width="100%" alt="1arm_circles_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_circles_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/1arm_circles_turn.gif" width="100%" alt="1arm_circles_turn">
 </td>
 </tr>
 </table>
@@ -337,24 +256,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_waving_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/1arm_waving_stand.gif" width="100%" alt="1arm_waving_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_waving_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/1arm_waving_walk.gif" width="100%" alt="1arm_waving_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/1arm_waving_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/1arm_waving_turn.gif" width="100%" alt="1arm_waving_turn">
 </td>
 </tr>
 </table>
@@ -366,24 +276,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/taichi_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/taichi_stand.gif" width="100%" alt="taichi_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/taichi_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/taichi_walk.gif" width="100%" alt="taichi_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/taichi_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/taichi_turn.gif" width="100%" alt="taichi_turn">
 </td>
 </tr>
 </table>
@@ -393,24 +294,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/boxing_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/boxing_stand.gif" width="100%" alt="boxing_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/boxing_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/boxing_walk.gif" width="100%" alt="boxing_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/boxing_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/boxing_turn.gif" width="100%" alt="boxing_turn">
 </td>
 </tr>
 </table>
@@ -420,24 +312,15 @@ The `stand` command is `[0.0, 0.0, 0.0]`, `walk forward` command is `[0.5, 0.0, 
 <tr>
 <td width="33%" align="center">
 <strong>stand</strong><br>
-<video width="100%" controls>
-  <source src="demo/random_stand.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>  
+<img src="demo/random_stand.gif" width="100%" alt="random_stand">
 </td>
 <td width="33%" align="center">
 <strong>walk forward</strong><br>
-<video width="100%" controls>
-  <source src="demo/random_walk.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/random_walk.gif" width="100%" alt="random_walk">
 </td>
 <td width="33%" align="center">
 <strong>walk+turn</strong><br>
-<video width="100%" controls>
-  <source src="demo/random_turn.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="demo/random_turn.gif" width="100%" alt="random_turn">
 </td>
 </tr>
 </table>

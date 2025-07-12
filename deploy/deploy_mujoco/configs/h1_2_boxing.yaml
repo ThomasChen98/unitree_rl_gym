@@ -1,9 +1,9 @@
-# Configuration for H1_2 robot with hybrid control:
+# Configuration for H1_2 robot with hybrid control optimized for boxing:
 # - Lower body (12 DOF): controlled by policy
-# - Upper body (15 DOF): controlled by predefined trajectories
+# - Upper body (15 DOF): controlled by boxing trajectories with enhanced PD gains
 policy_path: "{LEGGED_GYM_ROOT_DIR}/logs/h1_2/exported/policies/policy_lstm_1.pt"
 xml_path: "{LEGGED_GYM_ROOT_DIR}/resources/robots/h1_2/scene.xml"
-# policy_path: "/home/yuxin/unitree_rl_gym/deploy/pre_train/h1_2/motion.pt"
+
 # Total simulation time
 simulation_duration: 60.0
 # Simulation time step
@@ -17,27 +17,22 @@ lower_body_kps: [200, 200, 200, 300, 40, 40,
 lower_body_kds: [2.5, 2.5, 2.5, 4, 2, 2,  
                  2.5, 2.5, 2.5, 4, 2, 2]
 
-# PD gains for upper body (15 DOF)
-# upper_body_kps: [50,  # torso
-#                  50, 50, 30, 30, 20, 20, 20,  # left arm
-#                  50, 50, 30, 30, 20, 20, 20]  # right arm
-# upper_body_kds: [0,  # torso
-#                  2.0, 2.0, 1.5, 1.5, 1.0, 1.0, 1.0,  # left arm
-#                  2.0, 2.0, 1.5, 1.5, 1.0, 1.0, 1.0]  # right arm
-upper_body_kps: [50,  # torso
-                 80, 80, 50, 50, 20, 20, 20,  # left arm
-                 80, 80, 50, 50, 20, 20, 20]  # right arm
-upper_body_kds: [0,  # torso
-                 2.0, 2.0, 1.5, 1.5, 1.0, 1.0, 1.0,  # left arm
-                 2.0, 2.0, 1.5, 1.5, 1.0, 1.0, 1.0]  # right arm
+# Enhanced PD gains for upper body (15 DOF) - optimized for boxing stability
+upper_body_kps: [200,  # torso - increased for better stability
+                 120, 110, 100,200, 50, 40, 40,  # left arm - higher gains for faster response
+                 120, 110, 80, 200, 50, 40, 40]  # right arm - higher gains for faster response
+upper_body_kds: [10.0,  # torso - increased damping to reduce oscillations
+                 3.0, 3.0, 3.0, 2.5, 2.5, 2.0, 2.0,  # left arm - higher damping
+                 5.0, 5.0, 3.5, 2.5, 2.5, 2.0, 2.0]  # right arm - higher damping
+
 # Default angles for lower body (12 DOF) - same as original
 lower_body_default_angles: [0, -0.16, 0.0, 0.36, -0.2, 0.0, 
                            0, -0.16, 0.0, 0.36, -0.2, 0.0]
 
-# Default angles for upper body (15 DOF)
 upper_body_default_angles: [0.0,  # torso
                            0.0, 0.0, 0.0, 1.5, 0.0, 0.0, 0.0,  # left arm
                            0.0, 0.0, 0.0, 1.5, 0.0, 0.0, 0.0]  # right arm
+
 
 # Policy parameters (same as original for lower body)
 ang_vel_scale: 0.25
@@ -50,9 +45,11 @@ num_obs: 47
 
 cmd_init: [0, 0, 0]
 
-# Upper body trajectory parameters
-trajectory_amplitude: 0.5  # Amplitude for arm circular motion (radians)
-trajectory_frequency: 0.5  # Frequency of circular motion (Hz)
-torso_bend_amplitude: 0.2  # Maximum torso forward bend (radians)
-torso_bend_frequency: 0.3  # Frequency of torso bending (Hz)
-arm_forward_offset: -2.0 #ase forward position for arms (radians)
+# Upper body trajectory parameters for boxing
+trajectory_amplitude: 0.3  # Reduced amplitude for more controlled movement
+trajectory_frequency: 0.3  # Slower frequency for more stable motion
+
+# Boxing specific parameters
+boxing_punch_force: 1.2    # Force multiplier for punch extension
+boxing_guard_stiffness: 1.5  # Stiffness multiplier for guard position
+boxing_transition_time: 0.4  # Smooth transition time between poses

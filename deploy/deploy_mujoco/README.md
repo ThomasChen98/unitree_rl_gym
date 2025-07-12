@@ -1,4 +1,4 @@
-# H1_2 Hybrid Control testsets
+# H1_2 Hybrid Control test
 
 **Language**: [🇺🇸 English (current)](#) | [🇨🇳 中文版本](README_zh.md)
 

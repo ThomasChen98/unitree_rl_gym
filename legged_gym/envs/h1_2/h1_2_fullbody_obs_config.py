@@ -53,7 +53,7 @@ class H1_2FullBodyObsCfg(LeggedRobotCfg):
 
         # 上半身随机化配置
         upper_body_randomization = True
-        upper_body_angle_range = [-0.5, 0.5]  # 上半身关节随机范围 [rad]
+        upper_body_angle_range = [-0.3, 0.3]  # 上半身关节随机范围 [rad]
 
     class control(LeggedRobotCfg.control):
         control_type = "P"
@@ -67,14 +67,14 @@ class H1_2FullBodyObsCfg(LeggedRobotCfg):
             "ankle_pitch_joint": 40.0,
             "ankle_roll_joint": 40.0,
             # 上半身PD参数 (用于维持固定姿态)
-            "torso_joint": 160.0,
-            "shoulder_pitch_joint": 60.0,
-            "shoulder_roll_joint": 60.0,
-            "shoulder_yaw_joint": 60.0,
-            "elbow_pitch_joint": 30.0,
-            "elbow_roll_joint": 30.0,
-            "wrist_pitch_joint": 15.0,
-            "wrist_yaw_joint": 15.0,
+            "torso_joint": 600.0,
+            "shoulder_pitch_joint": 80.0,
+            "shoulder_roll_joint": 80.0,
+            "shoulder_yaw_joint": 80.0,
+            "elbow_pitch_joint": 40.0,
+            "elbow_roll_joint": 60.0,
+            "wrist_pitch_joint": 60.0,
+            "wrist_yaw_joint": 60.0,
         }
 
         damping = {
@@ -85,10 +85,10 @@ class H1_2FullBodyObsCfg(LeggedRobotCfg):
             "ankle_pitch_joint": 2.0,
             "ankle_roll_joint": 2.0,
             # 上半身阻尼
-            "torso_joint": 3.0,
-            "shoulder_pitch_joint": 2.5,
-            "shoulder_roll_joint": 5.0,
-            "shoulder_yaw_joint": 5.0,
+            "torso_joint": 15.0,
+            "shoulder_pitch_joint": 2.0,
+            "shoulder_roll_joint": 2.0,
+            "shoulder_yaw_joint": 1.0,
             "elbow_pitch_joint": 1.0,
             "elbow_roll_joint": 1.0,
             "wrist_pitch_joint": 1.0,
@@ -126,15 +126,15 @@ class H1_2FullBodyObsCfg(LeggedRobotCfg):
 
         class scales(LeggedRobotCfg.rewards.scales):
             # 增强稳定性权重 (因为上半身随机姿态会增加难度)
-            tracking_lin_vel = 1.2  # 稍微增强速度跟踪
+            tracking_lin_vel = 0.8
             tracking_ang_vel = 0.5
-            lin_vel_z = -2.0
-            ang_vel_xy = -0.08  # 增强角速度稳定
-            orientation = -1.5  # 增强姿态稳定
-            base_height = -12.0  # 增强高度稳定
+            lin_vel_z = -0.2  # 惩罚垂直移动
+            ang_vel_xy = -0.3  # 增强角速度稳定
+            orientation = -0.1  # 增强姿态稳定
+            base_height = -10.0  # 增强高度稳定
             dof_acc = -2.5e-7
             dof_vel = -1e-3
-            feet_air_time = 0.0
+            feet_air_time = 0.5  # 增强脚部空中时间奖励
             collision = 0.0
             action_rate = -0.01
             dof_pos_limits = -5.0
@@ -143,16 +143,18 @@ class H1_2FullBodyObsCfg(LeggedRobotCfg):
             contact_no_vel = -0.2
             feet_swing_height = -20.0
             contact = 0.18
+            direction_consistency = 0.5  # 方向一致性奖励
+            lateral_direction_consistency = -0.3  # 侧向方向一致性惩罚（负权重）
 
             # 新增奖励: 惩罚上半身偏离随机目标角度
-            upper_body_tracking = -0.1
+            # upper_body_tracking = -0.1
 
 
 class H1_2FullBodyObsCfgPPO(LeggedRobotCfgPPO):
     class policy:
         init_noise_std = 0.8
         actor_hidden_dims = [64, 32]  # 稍微增大网络 (因为观测维度增加)
-        critic_hidden_dims = [64, 32]
+        critic_hidden_dims = [64, 32]  # 与原始h1_2保持一致以便迁移学习
         activation = "elu"
         # 使用LSTM处理序列信息
         rnn_type = "lstm"

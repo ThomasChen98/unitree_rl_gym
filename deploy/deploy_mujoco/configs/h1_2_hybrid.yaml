@@ -1,7 +1,8 @@
 # Configuration for H1_2 robot with hybrid control:
 # - Lower body (12 DOF): controlled by policy
 # - Upper body (15 DOF): controlled by predefined trajectories
-policy_path: "{LEGGED_GYM_ROOT_DIR}/logs/h1_2/exported/policies/policy_lstm_1.pt"
+# policy_path: "{LEGGED_GYM_ROOT_DIR}/logs/h1_2/exported/policies/policy_lstm_1.pt"
+policy_path: "{LEGGED_GYM_ROOT_DIR}/logs/h1_2_fullbody_obs/exported/policies/policy_lstm_1.pt"
 xml_path: "{LEGGED_GYM_ROOT_DIR}/resources/robots/h1_2/scene.xml"
 # policy_path: "/home/yuxin/unitree_rl_gym/deploy/pre_train/h1_2/motion.pt"
 # Total simulation time
@@ -17,13 +18,7 @@ lower_body_kps: [200, 200, 200, 300, 40, 40,
 lower_body_kds: [2.5, 2.5, 2.5, 4, 2, 2,  
                  2.5, 2.5, 2.5, 4, 2, 2]
 
-# PD gains for upper body (15 DOF)
-# upper_body_kps: [50,  # torso
-#                  50, 50, 30, 30, 20, 20, 20,  # left arm
-#                  50, 50, 30, 30, 20, 20, 20]  # right arm
-# upper_body_kds: [0,  # torso
-#                  2.0, 2.0, 1.5, 1.5, 1.0, 1.0, 1.0,  # left arm
-#                  2.0, 2.0, 1.5, 1.5, 1.0, 1.0, 1.0]  # right arm
+
 upper_body_kps: [50,  # torso
                  80, 80, 50, 50, 20, 20, 20,  # left arm
                  80, 80, 50, 50, 20, 20, 20]  # right arm

@@ -280,7 +280,7 @@
 <td width="33%" align="center">
 <strong>旋转行走</strong><br>
 <video width="100%" controls>
-  <source src="demo/pose_torso_side_twist_rotate.mp4" type="video/mp4">
+  <source src="demo/pose_torso_side_twist_turn.mp4" type="video/mp4">
   您的浏览器不支持视频标签。
 </video>
 <em>命令: [0.3, 0.0, 0.8] - 慢进+快转</em>
@@ -342,7 +342,7 @@
 <td width="33%" align="center">
 <strong>侧移挥手</strong><br>
 <video width="100%" controls>
-  <source src="demo/2arms_waving_side.mp4" type="video/mp4">
+  <source src="demo/2arms_waving_turn.mp4" type="video/mp4">
   您的浏览器不支持视频标签。
 </video>
 <em>命令: [0.0, 0.7, 0.0] - 侧移+双臂挥手</em>
@@ -372,7 +372,7 @@
 <td width="33%" align="center">
 <strong>复合摆动</strong><br>
 <video width="100%" controls>
-  <source src="demo/1arm_circles_complex.mp4" type="video/mp4">
+  <source src="demo/1arm_circles_turn.mp4" type="video/mp4">
   您的浏览器不支持视频标签。
 </video>
 <em>命令: [0.6, 0.4, 0.2] - 复合运动+摆动</em>
@@ -426,7 +426,7 @@
 <td width="33%" align="center">
 <strong>慢步太极</strong><br>
 <video width="100%" controls>
-  <source src="demo/taichi_slow.mp4" type="video/mp4">
+  <source src="demo/taichi_walk.mp4" type="video/mp4">
   您的浏览器不支持视频标签。
 </video>
 <em>命令: [0.3, 0.0, 0.0] - 慢步+太极</em>
@@ -456,7 +456,7 @@
 <td width="33%" align="center">
 <strong>前进拳击</strong><br>
 <video width="100%" controls>
-  <source src="demo/boxing_advance.mp4" type="video/mp4">
+  <source src="demo/boxing_walk.mp4" type="video/mp4">
   您的浏览器不支持视频标签。
 </video>
 <em>命令: [0.6, 0.0, 0.0] - 前进+拳击</em>
@@ -464,7 +464,7 @@
 <td width="33%" align="center">
 <strong>机动拳击</strong><br>
 <video width="100%" controls>
-  <source src="demo/boxing_mobile.mp4" type="video/mp4">
+  <source src="demo/boxing_turn.mp4" type="video/mp4">
   您的浏览器不支持视频标签。
 </video>
 <em>命令: [0.4, 0.3, 0.5] - 机动+拳击</em>
@@ -494,7 +494,7 @@
 <td width="33%" align="center">
 <strong>全向随机</strong><br>
 <video width="100%" controls>
-  <source src="demo/random_omni.mp4" type="video/mp4">
+  <source src="demo/random_turn.mp4" type="video/mp4">
   您的浏览器不支持视频标签。
 </video>
 <em>命令: [0.5, 0.5, 0.3] - 全向+随机动作</em>
